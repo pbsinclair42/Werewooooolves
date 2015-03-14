@@ -7,28 +7,47 @@ players = [
 ]
 
 sadWords = ["Sadly, ","A terrible tragedy occured last night.  ", "Bad news.  ", "The village is in mourning today.  "]
-happyWords = ["Fortunately, ", "Good news!  ", "After many years of waiting, ", "Party in the village today!  "]
+happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in the village today!  "]
 neutralWords = ["By the way, ",""]
 sentimentWords=[sadWords,neutralWords,happyWords]
 
-locationWords = ["in a skip", "at the bottom of the well", "in their garden", "in their bed","in the wine cellar","in his private bed at the village brothel"]
 
-causesOfDeath = ["mauled to death","ripped to shreds","with their internal organs scattered everywhere","lying in a pool of blood","with its ears ripped off","torn from limb to limb","hanging from a tree","drowned in a barrel of wine"]
+def deathGenerator(name,gender):
 
-lastWords = ["I leave all my money to my cat.","Tell my wife I cheated on her with a slut.  It was fun.  YOLO.","I had a good life.  Until I was killed, anyway"]
+	if (gender=='M'):
+		he='he'
+		his='his'
+		him='him'
+	elif (gender=='F'):
+		he='she'
+		his='her'
+		him='her'
+	else:
+		return "Invalid gender, enter M or F"
 
-def deathGenerator(name):
+	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel"]
+
+	causesOfDeath = ["mauled to death","ripped to shreds","with "+his+" internal organs scattered everywhere","lying in a pool of blood","with "+his+" ears ripped off","torn from limb to limb","hanging from a tree","drowned in a barrel of wine"]
+
+	lastWords = ["I leave all my money to my cat.","Tell my wife I cheated on her with a slut.  It was fun.  YOLO.","I had a good life.  Until I was killed, anyway","Bye!"]
+
+	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You find "+his+" final tweet."]
+
 	found = players[randint(0,len(players)-1)]
 	sentiment = randint(0,2) #0 is sad, 1 is neutral, 2 is happy
-	sentimentPrefix = sentimentWords[sentiment][randint(0,len(sentimentWords[sentiment])-1)]
-	location = locationWords[randint(0,len(locationWords)-1)]
-	cause=causesOfDeath[randint(0,len(causesOfDeath)-1)]
-	will=lastWords[randint(0,len(lastWords)-1)]
-	return sentimentPrefix+found+" found " + name +" "+cause + " "+ location+'.  They held a note in their hand.  It read: "'+will+'"'
+	sentimentPrefix = randomEntry(sentimentWords[sentiment])
+	location = randomEntry(locationWords)
+	cause=randomEntry(causesOfDeath)
+	words=randomEntry(lastWords)
+	willType = randomEntry(willTypes)
+	will = willType+'  It read: "'+words+'"'
+	return sentimentPrefix+found+" found " + name +" "+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
+
+def randomEntry(array):
+	return array[randint(0,len(array)-1)]
 
 
-
-print deathGenerator("Bob")
+print deathGenerator("Bob",'M')
 
 
 
