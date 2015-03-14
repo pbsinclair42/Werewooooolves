@@ -13,19 +13,8 @@ players = [
 
 village='Lovely Burgh'
 
-sadWords = ["Sadly, ","A terrible tragedy occured last night in " +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
-happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in " +village+ " today!  "]
-neutralWords = ["Curious happenings last night.  ","","By the way, ","","This morning, you were all woken by a loud scream, as "]
-
-sentimentWords=[sadWords,neutralWords,happyWords]
-
 
 def deathGenerator(name,gender):
-
-	if (name in players):
-		players.remove(name)
-	else:
-		return "Error: "+name + " is't in the village, or is already dead.  (Current village: "+', '.join(players) + ")"
 
 	if (gender=='M'):
 		he='he'
@@ -41,6 +30,11 @@ def deathGenerator(name,gender):
 		him='them'
 	else:
 		return "Invalid gender, enter M, F or N"
+
+	sadWords = ["Sadly, ","A terrible tragedy occured last night in " +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
+	happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting for "+him+" to die, ", "Party in " +village+ " today!  "]
+	neutralWords = ["Curious happenings last night.  ","","By the way, ","","This morning, you were all woken by a loud scream, as "]
+	sentimentWords=[sadWords,neutralWords,happyWords]
 
 	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel","behind a hedge","under a bush","outside "+randomEntry(players)+"'s house"]
 
