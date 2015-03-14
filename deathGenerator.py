@@ -6,16 +6,16 @@ players = [
 'Joe',
 'Angus',
 'Paul',
-'Andrea',
+'Andreea',
 'Simon',
 'James'
 ]
 
 village='Lovely Burgh'
 
-sadWords = ["Sadly, ","A terrible tragedy occured last night" +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
-happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in " +village+ " today!  "]
-neutralWords = ["Curious happenings last night.  ","","By the way, ","","This morning, you were all woken by a loud scream, as "]
+sadWords = ["Sadly, ","A terrible tragedy occured last night in " +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
+happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in " +village+ " today!  ", village + " can finally celebrate! " ]
+neutralWords = ["Curious happenings last night.  ","","By the way, ","","This morning, you were all woken by a loud scream, as ", "While you were all sleeping, ", "Despite your efforts to rid "+village+" of werewolves"]
 
 sentimentWords=[sadWords,neutralWords,happyWords]
 
@@ -44,7 +44,7 @@ def deathGenerator(name,gender):
 
 	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel","behind a hedge","under a bush","outside "+randomEntry(players)+"'s house"]
 
-	causesOfDeath = ["mauled to death","ripped to shreds","with "+his+" internal organs scattered everywhere","lying in a pool of blood","with "+his+" ears ripped off","torn from limb to limb","hanging from a tree","drowned in a barrel of wine"]
+	causesOfDeath = ["mauled to death","ripped to shreds","with "+his+" internal organs scattered everywhere","lying in a pool of blood","with "+his+" ears ripped off","torn from limb to limb","drowned in a barrel of wine"]
 
 	lastWords = ["I leave all my money to my cat.","Tell my wife I cheated on her with a slut.  It was fun.  YOLO.","I had a good life.  Until I was killed, anyway.","Bye!","They're coming for you too.","Don't trust "+randomEntry(players),"I only wish I had confessed my love to "+randomEntry(players)]
 
