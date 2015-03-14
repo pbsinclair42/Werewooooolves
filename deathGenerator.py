@@ -11,6 +11,14 @@ players = [
 'James'
 ]
 
+jobs = [
+'whore',
+'rabbit',
+'priest',
+'begger',
+'milk maid'
+]
+
 village='Lovely Burgh'
 
 sadWords = ["Sadly, ","A terrible tragedy occured last night in " +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
@@ -22,11 +30,6 @@ sentimentWords=[sadWords,neutralWords,happyWords]
 
 
 def deathGenerator(name,gender):
-
-	if (name in players):
-		players.remove(name)
-	else:
-		return "Error: "+name + " is't in the village, or is already dead.  (Current village: "+', '.join(players) + ")"
 
 	if (gender=='M'):
 		he='he'
@@ -51,7 +54,10 @@ def deathGenerator(name,gender):
 
 	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You found "+his+" final tweet."]
 
+	jobDescription = ["the favourite ", "the best ", "the cutest", "the despicable ", "the sexy ", "the adorable "]
 	found = players[randint(0,len(players)-1)]
+	job = jobs[randint(0,len(jobs)-1)]
+	description = jobDescription[randint(0,len(jobDescription)-1)]
 	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
 	if (sentiment==0):
 		sentiment=2 # happy
@@ -67,7 +73,7 @@ def deathGenerator(name,gender):
 	words=randomEntry(lastWords)
 	willType = randomEntry(willTypes)
 	will = willType+'  It read: "'+words+'"'
-	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +" "+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
+	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +", " + description + job + " ," + location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
 
 
 def randomEntry(array):
@@ -85,8 +91,3 @@ print deathGenerator("Joe",'M')
 
 
 
-#"over there.  And over there.  And over there.  ...and over there"
-<<<<<<< HEAD
-=======
-#,"hanging from a tree"
->>>>>>> origin/master
