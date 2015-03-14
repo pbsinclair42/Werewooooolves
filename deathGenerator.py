@@ -6,9 +6,12 @@ players = [
 'Player3'
 ]
 
-sadWords = ["Sadly, ","A terrible tragedy occured last night.  ", "Bad news.  ", "The village is in mourning today.  ","Sad times.  ",]
-happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in the village today!  "]
+village='Lovely Burgh'
+
+sadWords = ["Sadly, ","A terrible tragedy occured last night" +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
+happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in " +village+ " today!  "]
 neutralWords = ["Curious happenings last night.  ","","By the way, ","","This morning, you were all woken by a loud scream, as "]
+
 sentimentWords=[sadWords,neutralWords,happyWords]
 
 
