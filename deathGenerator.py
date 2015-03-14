@@ -6,14 +6,14 @@ players = [
 'Joe',
 'Angus',
 'Paul',
-'Andrea',
+'Andreea',
 'Simon',
 'James'
 ]
 
 village='Lovely Burgh'
 
-sadWords = ["Sadly, ","A terrible tragedy occured last night" +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
+sadWords = ["Sadly, ","A terrible tragedy occured last night in " +village+".  ", "Bad news.  ", "The village of " +village+" is in mourning today.  ","Sad times.  ", village + " is in despair. "]
 happyWords = ["You'll all be glad to hear that ", "Good news!  ", "After many years of waiting, ", "Party in " +village+ " today!  "]
 neutralWords = ["Curious happenings last night.  ","","By the way, ","","This morning, you were all woken by a loud scream, as "]
 
@@ -44,11 +44,11 @@ def deathGenerator(name,gender):
 
 	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel","behind a hedge","under a bush","outside "+randomEntry(players)+"'s house"]
 
-	causesOfDeath = ["mauled to death","ripped to shreds","with "+his+" internal organs scattered everywhere","lying in a pool of blood","with "+his+" ears ripped off","torn from limb to limb","hanging from a tree","drowned in a barrel of wine"]
+	causesOfDeath = ["mauled to death","ripped to shreds","with "+his+" internal organs scattered everywhere","lying in a pool of blood","with "+his+" ears ripped off","torn from limb to limb","drowned in a barrel of wine"]
 
 	lastWords = ["I leave all my money to my cat.","Tell my wife I cheated on her with a slut.  It was fun.  YOLO.","I had a good life.  Until I was killed, anyway.","Bye!","They're coming for you too.","Don't trust "+randomEntry(players),"I only wish I had confessed my love to "+randomEntry(players)]
 
-	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You find "+his+" final tweet."]
+	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You found "+his+" final tweet."]
 
 	found = players[randint(0,len(players)-1)]
 	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
@@ -68,6 +68,7 @@ def deathGenerator(name,gender):
 	will = willType+'  It read: "'+words+'"'
 	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +" "+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
 
+
 def randomEntry(array):
 	return array[randint(0,len(array)-1)]
 
@@ -84,3 +85,4 @@ print deathGenerator("Joe",'M')
 
 
 #"over there.  And over there.  And over there.  ...and over there"
+#,"hanging from a tree"
