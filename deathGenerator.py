@@ -1,9 +1,14 @@
+# Happy pi day everyone!
+
 from random import randint
 
 players = [
-'Player1',
-'Player2',
-'Player3'
+'Joe',
+'Angus',
+'Paul',
+'Andrea',
+'Simon',
+'James'
 ]
 
 village='Lovely Burgh'
@@ -16,6 +21,11 @@ sentimentWords=[sadWords,neutralWords,happyWords]
 
 
 def deathGenerator(name,gender):
+
+	if (name in players):
+		players.remove(name)
+	else:
+		return "Error: "+name + " is't in the village, or is already dead.  (Current village: "+', '.join(players) + ")"
 
 	if (gender=='M'):
 		he='he'
@@ -32,11 +42,11 @@ def deathGenerator(name,gender):
 	else:
 		return "Invalid gender, enter M, F or N"
 
-	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel"]
+	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel","behind a hedge","under a bush","outside "+randomEntry(players)+"'s house"]
 
 	causesOfDeath = ["mauled to death","ripped to shreds","with "+his+" internal organs scattered everywhere","lying in a pool of blood","with "+his+" ears ripped off","torn from limb to limb","hanging from a tree","drowned in a barrel of wine"]
 
-	lastWords = ["I leave all my money to my cat.","Tell my wife I cheated on her with a slut.  It was fun.  YOLO.","I had a good life.  Until I was killed, anyway","Bye!"]
+	lastWords = ["I leave all my money to my cat.","Tell my wife I cheated on her with a slut.  It was fun.  YOLO.","I had a good life.  Until I was killed, anyway.","Bye!","They're coming for you too.","Don't trust "+randomEntry(players),"I only wish I had confessed my love to "+randomEntry(players)]
 
 	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You find "+his+" final tweet."]
 
@@ -49,19 +59,22 @@ def deathGenerator(name,gender):
 	else:
 		sentiment=0 # sad
 
+
 	sentimentPrefix = randomEntry(sentimentWords[sentiment]) 
 	location = randomEntry(locationWords)
 	cause=randomEntry(causesOfDeath)
 	words=randomEntry(lastWords)
 	willType = randomEntry(willTypes)
 	will = willType+'  It read: "'+words+'"'
-	return sentimentPrefix+found+" found " + name +" "+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
+	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +" "+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
 
 def randomEntry(array):
 	return array[randint(0,len(array)-1)]
 
 
-print deathGenerator("Bob",'M')
+print deathGenerator("Joe",'M')
+
+
 
 
 
