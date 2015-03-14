@@ -56,8 +56,6 @@ def deathGenerator(name,gender):
 
 	jobDescription = ["the favourite ", "the best ", "the cutest", "the despicable ", "the sexy ", "the adorable "]
 	found = players[randint(0,len(players)-1)]
-	job = jobs[randint(0,len(jobs)-1)]
-	description = jobDescription[randint(0,len(jobDescription)-1)]
 	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
 	if (sentiment==0):
 		sentiment=2 # happy
@@ -66,14 +64,16 @@ def deathGenerator(name,gender):
 	else:
 		sentiment=0 # sad
 
-
 	sentimentPrefix = randomEntry(sentimentWords[sentiment]) 
 	location = randomEntry(locationWords)
+	job = randomEntry(jobs)
+	description = randomEntry(jobDescription)
+	occupation = ", " + description + job + ", "
 	cause=randomEntry(causesOfDeath)
 	words=randomEntry(lastWords)
 	willType = randomEntry(willTypes)
 	will = willType+'  It read: "'+words+'"'
-	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +", " + description + job + " ," + location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
+	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +(occupation if randint (0,2)==0 else " ")+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
 
 
 def randomEntry(array):
