@@ -22,8 +22,12 @@ def deathGenerator(name,gender):
 		he='she'
 		his='her'
 		him='her'
+	elif (gender=='N'):
+		he='they'
+		his='their'
+		him='them'
 	else:
-		return "Invalid gender, enter M or F"
+		return "Invalid gender, enter M, F or N"
 
 	locationWords = ["in a skip", "at the bottom of the well", "in "+his+" garden", "in "+his+" bed","in the wine cellar","in "+his+" private bed at the village brothel"]
 
@@ -34,8 +38,15 @@ def deathGenerator(name,gender):
 	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You find "+his+" final tweet."]
 
 	found = players[randint(0,len(players)-1)]
-	sentiment = randint(0,2) #0 is sad, 1 is neutral, 2 is happy
-	sentimentPrefix = randomEntry(sentimentWords[sentiment])
+	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
+	if (sentiment==0):
+		sentiment=2 # happy
+	elif (sentiment<4):
+		sentiment=1 # neutral
+	else:
+		sentiment=0 # sad
+
+	sentimentPrefix = randomEntry(sentimentWords[sentiment]) 
 	location = randomEntry(locationWords)
 	cause=randomEntry(causesOfDeath)
 	words=randomEntry(lastWords)
