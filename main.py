@@ -5,17 +5,16 @@ import time
 print "Welcome to Werewolf Helper!"
 print "Enter the names of all of those in your village, then 'end' to end."
 players=[]
-name = raw_input()
-name = name.capitalize()
+name = raw_input().capitalize()
 while (name!='End'):
 	if name!='Back':
 		if (name in players):
 			print name + " is already in the village!  "
 		else:
 			players.insert(0,name)
-	name = raw_input()
+	name = raw_input().capitalize()
 
-village = raw_input("Enter the name of your village: ")
+village = raw_input("Enter the name of your village: ").capitalize()
 
 print "Great, we're ready to go!"
 time.sleep(2)
@@ -87,7 +86,7 @@ def kill():
 
 def doTheDeed(theDoomedOne,gender):
 	os.system('cls')
-	print deathGenerator(theDoomedOne,gender)
+	print deathGenerator(theDoomedOne,gender,players,village)
 	players.remove(theDoomedOne)
 	print
 	raw_input('Press Enter to continue...')

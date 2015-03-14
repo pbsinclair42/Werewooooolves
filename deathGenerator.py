@@ -2,15 +2,6 @@
 
 from random import randint
 
-players = [
-'Joe',
-'Angus',
-'Paul',
-'Andreea',
-'Simon',
-'James'
-]
-
 jobs = [
 'whore',
 'rabbit',
@@ -19,9 +10,8 @@ jobs = [
 'milk maid'
 ]
 
-village='Lovely Burgh'
 
-def deathGenerator(name,gender):
+def deathGenerator(name,gender,players,village):
 
 	if (gender=='M'):
 		he='he'
@@ -76,6 +66,4 @@ def deathGenerator(name,gender):
 def randomEntry(array):
 	return array[randint(0,len(array)-1)]
 
-
-print deathGenerator("Joe",'M')
 
