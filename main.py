@@ -2,6 +2,7 @@ from deathGenerator import deathGenerator
 import os
 import time
 
+os.system('cls')
 print "Welcome to Werewolf Helper!"
 print "Enter the names of all of those in your village, then 'end' to end."
 players=[]
@@ -83,13 +84,36 @@ def kill():
 				else:
 					print 'Invalid input'
 
+def lynch():
+	os.system('cls')
+	print "(Type 'back' to go back to the main menu)"
+	toContinue=True
+	while toContinue:
+		theDoomedOne = raw_input("Who is getting lynched today? ").capitalize()
+		if (theDoomedOne=='Back'):
+			toContinue=False
+			os.system('cls')
+		elif not (theDoomedOne in players):
+			print "Error: "+theDoomedOne + " isn't in the village, or is already dead."
+			print "(Current village: "+', '.join(players) + ")"
+		else:
+			toContinue=False
+			os.system('cls')
+			print theDoomedOne+' has been lynched!'
+			players.remove(theDoomedOne)
+			print
+			raw_input('Press Enter to continue...')
+			global lastDeath
+			lastDeath=theDoomedOne
 
 def doTheDeed(theDoomedOne,gender):
 	os.system('cls')
+	players.remove(name)
 	print deathGenerator(theDoomedOne,gender,players,village)
-	players.remove(theDoomedOne)
 	print
 	raw_input('Press Enter to continue...')
+	global lastDeath
+	lastDeath=theDoomedOne
 
 menu()
 
