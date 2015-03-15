@@ -2,15 +2,6 @@
 
 from random import randint
 
-jobs = [
-'whore',
-'rabbit',
-'priest',
-'beggar',
-'milk maid'
-]
-
-
 def deathGenerator(name,gender,job,players,village):
 
 	if (gender=='M'):
@@ -58,7 +49,7 @@ def deathGenerator(name,gender,job,players,village):
 	circumstancesWords = ["While doing the laundry, ", "While picking carrots, ", "While taking a morning walk, ", "While tending to the sheep, ", "On the way to fetch some water, ", "While taking part in some perfectly ordinary daily business, "]
 	
 	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
-	if (sentiment==0 or name=="Joe"):
+	if (sentiment==0 or name=="Angus"):
 		sentiment=2 # happy
 	elif (sentiment<4):
 		sentiment=1 # neutral
