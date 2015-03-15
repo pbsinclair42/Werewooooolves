@@ -58,6 +58,7 @@ def menu():
 			else:
 				print "Invalid input, try again."
 				toContinue=True
+	os.system('cls')
 
 
 def kill():
