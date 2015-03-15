@@ -2,16 +2,18 @@ from deathGenerator import deathGenerator
 import os
 import platform
 import time
+import sys
 
 def clear():
+	for i in range(0,100):
+		print
 	if (platform.system()=='Windows'):
 		os.system('cls')
 	elif (platform.system()=='Linux') or (platform.system()=='Darwin'):
 		os.system('clear')
 	else:
-		print
-		print
-		print
+		for i in range(0,100):
+			print
 
 
 clear()
