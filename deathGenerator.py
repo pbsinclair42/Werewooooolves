@@ -42,7 +42,11 @@ def deathGenerator(name,gender,players,village):
 	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You found "+his+" final tweet."]
 
 	jobDescription = ["the favourite ", "the best ", "the cutest", "the despicable ", "the sexy ", "the adorable "]
+
+	findingWords = [" stumbled upon ", " found ", " ran into "]
+
 	found = players[randint(0,len(players)-1)]
+	circumstancesWords = ["As "+found+" was doing "+his+" laundry, ", "While taking a morning walk, "+found, "As "+he+" was having tea, " +found, "While tending to the sheep, "+found, "On the way to fetch some water, "+found]
 	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
 	if (sentiment==0):
 		sentiment=2 # happy
@@ -50,7 +54,7 @@ def deathGenerator(name,gender,players,village):
 		sentiment=1 # neutral
 	else:
 		sentiment=0 # sad
-
+	findingway = randomEntry(findingWords)
 	sentimentPrefix = randomEntry(sentimentWords[sentiment]) 
 	location = randomEntry(locationWords)
 	job = randomEntry(jobs)
@@ -58,9 +62,15 @@ def deathGenerator(name,gender,players,village):
 	occupation = ", " + description + job + ", "
 	cause=randomEntry(causesOfDeath)
 	words=randomEntry(lastWords)
+	circumstances = randomEntry(circumstancesWords)
 	willType = randomEntry(willTypes)
 	will = willType+'  It read: "'+words+'"'
-	return sentimentPrefix+found+" found "+("poor " if randint(0,1)==0 and sentiment==0 else "") + name +(occupation if randint (0,2)==0 else " ")+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
+	randomstory=randint(0,1);
+	if(randomstory == 0):
+		return sentimentPrefix+found+ findingway +("poor " if randint(0,1)==0 and sentiment==0 else "") + name +(occupation if randint (0,2)==0 else " ")+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
+	elif(randomstory == 1):
+		return circumstances + " found " + name + (occupation if randint(0,2)==0 else " ") + location +', ' + cause +'. '+ (will if randint(0,3)==0 else "")
+
 
 
 def randomEntry(array):
