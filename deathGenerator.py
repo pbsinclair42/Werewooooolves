@@ -11,7 +11,7 @@ jobs = [
 ]
 
 
-def deathGenerator(name,gender,players,village):
+def deathGenerator(name,gender,job,players,village):
 
 	if (gender=='M'):
 		he='he'
@@ -68,7 +68,6 @@ def deathGenerator(name,gender,players,village):
 	findingWay = randomEntry(findingWords)
 	sentimentPrefix = randomEntry(sentimentWords[sentiment]) 
 	location = randomEntry(locationWords)
-	job = randomEntry(jobs)
 	description = randomEntry(jobDescription[sentiment])
 	occupation = ", " + description + job + ", "
 	cause=randomEntry(causesOfDeath)
