@@ -41,9 +41,9 @@ def deathGenerator(name,gender,players,village):
 
 	willTypes = [he.capitalize()+" held a note in "+his+" hand.","There was a message scrawled beside "+him+" in blood.","You found "+his+" final tweet."]
 
-	sadJobs = [village+"'s favourite ", village+"'s best ", "the sexy ","the much loved", "the adorable "]
+	sadJobs = [village+"'s favourite ", village+"'s best ", "the sexy ","the much loved ", "the adorable "]
 	neutralJobs = ["the "]
-	happyJobs = [ "the despicable ","the evil"]
+	happyJobs = [ "the despicable ","the evil", "everyone's least favourite"]
 	jobDescription = [sadJobs,neutralJobs,happyJobs]
 
 
@@ -51,7 +51,7 @@ def deathGenerator(name,gender,players,village):
 
 	found = randomEntry(players)
 
-	circumstancesWords = ["As "+found+" was doing the laundry, ", "While taking a morning walk, "+found, "While tending to the sheep, "+found, "On the way to fetch some water, "+found]
+	circumstancesWords = ["As "+found+" was doing the laundry, they", "While taking a morning walk, "+found, "While tending to the sheep, "+found, "On the way to fetch some water, "+found]
 	
 	sentiment = randint(0,10) # 1/10 chance of happy, 6/10 chance of sad, 3/10 chance of neutral
 	if (sentiment==0):
@@ -77,7 +77,7 @@ def deathGenerator(name,gender,players,village):
 	if(randomstory == 0):
 		return sentimentPrefix+found+ findingWay +("poor " if randint(0,1)==0 and sentiment==0 else "") + name +(occupation if randint (0,2)==0 else " ")+ location+', '+cause+'.  ' + (will if randint(0,5)==0 else "")
 	elif(randomstory == 1):
-		return circumstances + " found " + name + (occupation if randint(0,2)==0 else " ") + location +', ' + cause +'. '+ (will if randint(0,3)==0 else "")
+		return circumstances + findingWay + name + (occupation if randint(0,2)==0 else " ") + location +', ' + cause +'. '+ (will if randint(0,3)==0 else "")
 
 
 
