@@ -78,7 +78,7 @@ def deathGenerator(name,gender,job,players,village):
 
 	randomstory=randint(0,1);
 	if(randomstory == 0):
-		return sentimentPrefix+ found+ findingWay +("poor " if randint(0,1)==0 and sentiment==0 else "") + name +(occupation if randint (0,1)==0 else "")+ (" "+location if randint(0,1)==0 else "")+cause+'.  ' + (will if randint(0,5)==0 else "")
+		return sentimentPrefix+ found+ findingWay +("poor " if randint(0,1)==0 and sentiment==0 else "") + name +(occupation if randint (0,1)==0 else "")+ (", "+location if randint(0,1)==0 else "")+cause+'.  ' + (will if randint(0,5)==0 else "")
 	elif(randomstory == 1):
 		return circumstances + found + findingWay + name + (occupation if randint(0,1)==0 else "") + (", "+location if randint(0,1)==0 else "") +cause +'.  '+ (will if randint(0,3)==0 else "")
 
