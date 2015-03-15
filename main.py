@@ -1,8 +1,20 @@
 from deathGenerator import deathGenerator
 import os
+import platform
 import time
 
-os.system('cls')
+def clear():
+	if (platform.system()=='Windows'):
+		os.system('cls')
+	elif (platform.system()=='Linux') or (platform.system()=='Darwin'):
+		os.system('clear')
+	else:
+		print
+		print
+		print
+
+
+clear()
 print "Welcome to Werewolf Helper!"
 print
 print "Enter the names and professions of all of those in your village, separating the two with a comma, for example 'Joe, narrator' then enter 'end' to end."
@@ -18,7 +30,7 @@ while (inputtedPlayer!='End'):
 			job = inputtedPlayer[inputtedPlayer.index(',')+1:]
 			name = name.strip()
 			job=job.strip()
-			if (',' in job) or name='' or job='':
+			if (',' in job) or name=='' or job=='':
 				print "Invalid input"
 			elif (name in players):
 				print name + " is already in the village!  "
@@ -40,7 +52,7 @@ gameContinues=True
 
 def menu():
 	while gameContinues:
-		os.system('cls')
+		clear()
 		print "Pick an option:"
 		print
 		print "1 - Have a character killed by werewolves.  We'll generate a lovely death message for you!"
@@ -56,9 +68,15 @@ def menu():
 			selection = raw_input().strip()
 			toContinue=False
 			if selection=='1':
-				kill()
+				if len(players)<2:
+					print "There's not enough people left to kill!"
+				else:
+					kill()
 			elif selection=='2':
-				lynch()
+				if len(players)<2:
+					print "There's not enough people left to kill!"
+				else:
+					lynch()
 			elif selection=='3':
 				undo()
 			elif selection=='4':
@@ -73,7 +91,7 @@ def menu():
 
 
 def kill():
-	os.system('cls')
+	clear()
 	print "(Type 'back' to go back to the main menu)"
 	print
 	toContinue=True
@@ -81,7 +99,7 @@ def kill():
 		theDoomedOne = raw_input("Who is getting slaughtered tonight? ").strip().capitalize()
 		if (theDoomedOne=='Back'):
 			toContinue=False
-			os.system('cls')
+			clear()
 		elif(theDoomedOne==''):
 			pass
 		elif not (theDoomedOne in players):
@@ -103,15 +121,18 @@ def kill():
 					print 'Invalid input'
 
 def lynch():
-	os.system('cls')
+	clear()
 	print "(Type 'back' to go back to the main menu)"
 	print
 	toContinue=True
 	while toContinue:
 		theDoomedOne = raw_input("Who is getting lynched today? ").strip().capitalize()
+		print theDoomedOne
+		print 'Back'
+		print (theDoomedOne == 'Back')
 		if (theDoomedOne is 'Back'): # what a line
 			toContinue=False
-			os.system('cls')
+			clear()
 		elif(theDoomedOne==''):
 			pass
 		elif not (theDoomedOne in players):
@@ -119,7 +140,7 @@ def lynch():
 			print "(Current village: "+', '.join(players) + ")"
 		else:
 			toContinue=False
-			os.system('cls')
+			clear()
 			print theDoomedOne+' has been lynched!'
 			global lastDeathJob
 			lastDeathJob = jobs.pop(players.index(theDoomedOne))
@@ -130,7 +151,7 @@ def lynch():
 			lastDeath=theDoomedOne
 
 def undo():
-	os.system('cls')
+	clear()
 	print "(Type 'back' to go back to the main menu)"
 	print
 	global lastDeath
@@ -165,7 +186,7 @@ def edit():
 	global players
 	toContinue=True
 	while toContinue:
-		os.system('cls')
+		clear()
 		print village+' - Population '+str(len(players))
 		print
 		for i in range(0,len(players)):
@@ -229,21 +250,21 @@ def edit():
 
 def end():
 	global gameContinues
-	os.system('cls')
+	clear()
 	print "(Type 'back' to go back to the main menu)"
 	print
 	toContinue=True
 	while toContinue:
 		winners = raw_input("Good game!  Who won, 1: Werewolves or 2: Villagers? ").strip()
 		if(winners=='1' or winners.capitalize()=="Werewolves"):
-			os.system('cls')
+			clear()
 			print "Arrroooooooooooooooooooo!"
 			toContinue=False
 			gameContinues=False
 			print
 			raw_input('(Press Enter to exit)')
 		elif (winners=='2' or winners.capitalize()=='Villagers'):
-			os.system('cls')
+			clear()
 			print "Hurrah!  "+village+" is safe once more!"
 			toContinue=False
 			gameContinues=False
@@ -255,7 +276,7 @@ def end():
 			print "Invalid input"
 
 def example():
-	os.system('cls')
+	clear()
 	print "Example death message:"
 	print
 	print deathGenerator('Joe','M','provider of happiness',['Angus','Paul','Andreea','James'],'HackTheBurgh')
@@ -263,7 +284,7 @@ def example():
 	raw_input('Press Enter to continue...')
 
 def doTheDeed(theDoomedOne,gender):
-	os.system('cls')
+	clear()
 	job = jobs.pop(players.index(theDoomedOne))
 	players.remove(theDoomedOne) # the best line of code I have ever written
 	print deathGenerator(theDoomedOne,gender,job,players,village)
